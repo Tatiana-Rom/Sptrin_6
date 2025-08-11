@@ -10,7 +10,7 @@ from pages.order_page import OrderPage
 
 
 class TestOrderPage:
-    @allure.step('Тестируем оформление заказа с валидными данными')
+    @allure.title('Тестируем оформление заказа с валидными данными')
     @pytest.mark.parametrize('button_position', ['down', 'up'])
     def test_created_order(self, driver, button_position):
         main_page = MainPage(driver)
