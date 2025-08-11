@@ -23,6 +23,7 @@ class MainPage(BasePage):
     def click_for_order_button_down(self):
         return self.click_to_element(MainPageLocators.order_button_down)
 
+    @allure.step('Создаем заказ по кнопке')
     def created_order(self, button):
         self.click_to_element(button)
 
@@ -47,3 +48,13 @@ class MainPage(BasePage):
     def check_answer_for_question(self, question_id):
         self.click_for_question(question_id)
         return self.get_answer_text(question_id)
+
+    @allure.step('Кликаем по кнопке Заказать по позиции')
+    def click_order_button(self, position):
+        if position == 'down':
+            self.scroll_for_order_button_down()
+            self.click_for_order_button_down()
+        elif position == 'up':
+            self.click_for_order_button_up()
+        else:
+            raise ValueError(f"Unknown button position: {position}")

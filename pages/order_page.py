@@ -15,7 +15,7 @@ class OrderPage(BasePage):
     def fill_in_input_last_name(self, last_name):
         return self.add_text_to_element(OrderPageLocators.input_last_name, last_name)
 
-    @allure.step('Заполняем поле Адресс')
+    @allure.step('Заполняем поле Адрес')
     def fill_in_input_address(self, address):
         return self.add_text_to_element(OrderPageLocators.input_address, address)
 
@@ -56,6 +56,9 @@ class OrderPage(BasePage):
         locator_count_rent_day = self.format_locators(OrderPageLocators.list_count_rent_day, rent_day)
         return self.click_to_element(locator_count_rent_day)
 
+    @allure.step('Проверяем, что страница заказа открыта')
+    def is_order_page_opened(self):
+        return self.find_element_with_wait(OrderPageLocators.title_order_page)
 
     @allure.step('Выбираем чек-бокс')
     def fill_in_checkbox_colour(self, colour):

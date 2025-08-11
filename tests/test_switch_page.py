@@ -8,7 +8,7 @@ from conftest import driver
 
 class TestSwitchPage:
     @allure.title('Проверка перехода на главную страницу по клику на лого Самоката')
-    def test_transition_from_order_page_to_main_page(self, driver,):
+    def test_transition_from_order_page_to_main_page(self, driver):
         switch_page = SwitchPage(driver)
         main_page = MainPage(driver)
         driver.get(MAIN)

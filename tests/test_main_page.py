@@ -3,9 +3,9 @@ import pytest
 
 from conftest import driver
 from pages.main_page import MainPage
+from pages.order_page import OrderPage
 from data.faq_data import answer_for_question
 from data.urls import MAIN
-from locators.order_page_locators import OrderPageLocators
 
 
 @allure.feature("Main Page")
@@ -25,7 +25,8 @@ class TestMainPage:
         driver.get(MAIN)
         page.accept_cookie()
         page.click_for_order_button_up()
-        assert page.find_element_with_wait(OrderPageLocators.title_order_page)
+        order_page = OrderPage(driver)
+        assert order_page.is_order_page_opened()
 
     @allure.title('Проверяем работу нижней кнопки Заказать')
     def test_click_order_button_down(self, driver):
@@ -34,4 +35,5 @@ class TestMainPage:
         page.accept_cookie()
         page.scroll_for_order_button_down()
         page.click_for_order_button_down()
-        assert page.find_element_with_wait(OrderPageLocators.title_order_page)
+        order_page = OrderPage(driver)
+        assert order_page.is_order_page_opened()
